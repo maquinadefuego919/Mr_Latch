@@ -37,8 +37,8 @@ nor NOR1(Q, S, Qn);
 nor NOR2(Qn, R, Q);
 
   //assign uio_out = 0;
-    assign uio_oe  = 0;
-    assign uio_in =0
+   // assign uio_oe  = 0;
+    //assign uio_in =0
   // List all unused inputs to prevent warnings
 wire _unused = &{ena, clk, rst_n, 1'b0};
 
