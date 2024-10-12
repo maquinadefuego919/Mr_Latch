@@ -22,8 +22,8 @@ module tt_um_Mr_Latch (
 
 wire Qn, Qn, S, R;
 
-assign ui_in[0]= S;
-assign ui_in[1]= R;
+assign S= ui_in[0];
+assign R=ui_in[1] ;
 
 assign uo_out[0]= Q;
 assign uo_out[1]= Qn;
@@ -32,10 +32,10 @@ assign uo_out[1]= Qn;
     assign uo_out[7:1] = 7'b0000000; 
     assign ui_in[7:2] = 6'b000000;
     
-wire Out_Q, Out_Qn;
+//wire Out_Q, Out_Qn;
 
-nor NOR1(Out_Q, S, Out_Qn);
-nor NOR2(Out_Qn, R, Out_Q);
+nor NOR1(Q, S, Qn);
+nor NOR2(Qn, R, Q);
 
   assign uio_out = 0;
     assign uio_oe  = 0;
