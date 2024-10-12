@@ -22,15 +22,15 @@ module tt_um_Mr_Latch (
 
 wire Qn, Qn, S, R;
 
-assign S= ui_in[0];
-assign R=ui_in[1] ;
+    assign S= ua[0];
+assign R=ua[1] ;
 
-assign uo_out[0]= Q;
-assign uo_out[1]= Qn;
+    assign ua[2]= Q;
+    assign ua[3]= Qn;
 
-    assign ua[5:0] = 6'b000000;
+    assign ua[5:4] = 2'b00;
     //assign uo_out[7:1] = 7'b0000000; 
-    assign ui_in[7:2] = 6'b000000;
+    assign ui_in[7:0] = 8'b00000000;
 
 
 nor NOR1(Q, S, Qn);
