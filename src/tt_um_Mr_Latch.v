@@ -28,18 +28,17 @@ assign R=ui_in[1] ;
 assign uo_out[0]= Q;
 assign uo_out[1]= Qn;
 
-    //assign ua[5:0] = 6'b000000;
-    assign uo_out[7:1] = 7'b0000000; 
+    assign ua[5:0] = 6'b000000;
+    //assign uo_out[7:1] = 7'b0000000; 
     assign ui_in[7:2] = 6'b000000;
-    
-//wire Out_Q, Out_Qn;
+
 
 nor NOR1(Q, S, Qn);
 nor NOR2(Qn, R, Q);
 
-  assign uio_out = 0;
+  //assign uio_out = 0;
     assign uio_oe  = 0;
-    
+    assign uio_in =0
   // List all unused inputs to prevent warnings
 wire _unused = &{ena, clk, rst_n, 1'b0};
 
