@@ -28,6 +28,10 @@ assign ui_in[1]= R;
 assign uo_out[0]= Q;
 assign uo_out[1]= Qn;
 
+//assign ua[5:3] = 3'b000;
+    assign uo_out[7:1] = 7'b0000000; 
+    assign ui_in[7:2] = 6'b000000;
+    
 wire Out_Q, Out_Qn;
 
 nor NOR1(Out_Q, S, Out_Qn);
