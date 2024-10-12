@@ -20,10 +20,18 @@ module tt_um_Mr_Latch (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+wire Qn, Qn, S, R;
 
+assign ui_in[0]= S;
+assign ui_in[1]= R;
 
+assign uo_out[0]= Q;
+assign uo_out[1]= Qn;
 
+wire Out_Q, Out_Qn;
 
+nor NOR1(Out_Q, S, Out_Qn);
+nor NOR2(Out_Qn, R, Out_Q);
 
 
 
