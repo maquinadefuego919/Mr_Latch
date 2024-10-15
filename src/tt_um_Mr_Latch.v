@@ -24,6 +24,7 @@ wire In, Out;
 
     assign ua[0] = In;
     assign ua[1] = Out;
+    assign ua[7:2] = VGND;
     
     pmos (Out, VDPWR, In);
     nmos (Out, VGND, In);
