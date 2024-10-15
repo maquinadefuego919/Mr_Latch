@@ -22,8 +22,8 @@ module tt_um_Mr_Latch (
 
 wire In, Out;
 
-    supply1 VDPWR;
-    supply0 VGND;
+    assign ua[0] = In;
+    assign ua[1] = Out;
     
     pmos (Out, VDPWR, In);
     nmos (Out, VGND, In);
