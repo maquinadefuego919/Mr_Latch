@@ -20,19 +20,24 @@ module tt_um_Mr_Latch (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-wire  In,Out;
+wire opamp_nonlinear(in_p,in_n, out_p,out_n,vcm_out);
+voltage in_p, in_n,out_p,out_n,vcm_out;
+parameter real Rin = 50 from (0:inf];
+parameter real Rout = 50 from (0:inf];
+parameter real Gp_dB = 10 from [-100:100];
+parameter real a2 = 0 from [0:inf];
+parameter real IP1dB =0 from [-100:100];
+real Gp=4*(10**(Gp_dB/10)); // The factor 4 is to account for the power loss in the input and output impedances.
+real a1=((Gp*Rout)/Rin)**0.5;
+real IP1dB_magnitude=(10**(IP1dB/10))*1e-3;
+real Vin1dBc=(2*Rin* IP1dB_magnitude)**0.5;
+real a3=(4*0.109*a1)/(3*(Vin1dBc**2));
+analog begin
+    V(out_p,vcm_out)<+ 0.5*(a1*V(in_p,in_n)+a2*(V(in_p,in_n)**2)-a3*(V(in_p,in_n)**3));
+    V(out_n,vcm_out)<+ -0.5*(a1*V(in_p,in_n)+a2*(V(in_p,in_n)**2)-a3*(V(in_p,in_n)**3));
+end
 
-    assign In= ua[0];
-assign Out=ua[1] ;
-
-    buf Buf1(Out,In);
-
-    //assign ua[5:2] = 4'b0000;
-    //assign uo_out[7:1] = 7'b0000000; 
-    //assign ui_in[7:0] = 8'b00000000;
-
- // assign uo_out[0] = VGND;
-  //assign uo_out[1] = VGND;
+    
   assign uo_out[2] = VGND;
   assign uo_out[3] = VGND;
   assign uo_out[4] = VGND;
@@ -58,12 +63,6 @@ assign Out=ua[1] ;
   assign uio_oe[6] = VGND;
   assign uio_oe[7] = VGND;
   
-
-  //assign uio_out = 0;
-   //assign uio_oe  = 0;
-    //assign uio_in =0
-  // List all unused inputs to prevent warnings
-wire _unused = &{ena, clk, rst_n, 1'b0};
 
     
 endmodule
