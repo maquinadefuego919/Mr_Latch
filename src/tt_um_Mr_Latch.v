@@ -25,10 +25,11 @@ wire In, Out;
     supply1 VDPWR;
     supply0 VGND;
     
-    pmos (Out,VDPWR ,In);
-    nmos (Out,VGND,In);
-    
-    
+    pmos (Out, VDPWR, In);
+    nmos (Out, VGND, In);
+
+    assign uo_out[0] = VGND;
+    assign uo_out[1] = VGND; 
   assign uo_out[2] = VGND;
   assign uo_out[3] = VGND;
   assign uo_out[4] = VGND;
