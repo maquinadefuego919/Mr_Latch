@@ -20,7 +20,7 @@ module tt_um_Mr_Latch (
     input  wire       rst_n     // reset_n - low to reset
 );
 // Definición de constantes
-localparam VGND = 0;
+
 
 wire Vip, Vin, Out;
 wire INn, INp, INn_CMP, INp_CMP, CMP, EN, not_EN, Op, On; // Señales internas
