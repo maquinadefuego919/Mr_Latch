@@ -19,9 +19,9 @@ jobs:
         with:
           cmd: echo TOP_MODULE=`yq '.project.top_module' info.yaml` > $GITHUB_OUTPUT
 
- name: Copy GDS file
+ -name: Copy GDS file
         run: |
-          cp ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
+          copy ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
 
       - name: Create and publish the GDS artifact
         uses: TinyTapeout/tt-gds-action/custom_gds@tt09
