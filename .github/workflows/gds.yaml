@@ -24,7 +24,7 @@ jobs:
  
       - name: Find GDS file
         run: |
-          echo ${{ github.event.inputs.design_dir }}
+          echo "Searching in: ${{ github.event.inputs.design_dir }}"
           find "${{ github.event.inputs.design_dir }}" -name "tt_um_Mr_Latch.gds"
        
       #- name: Find GDS file
