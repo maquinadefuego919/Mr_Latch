@@ -19,6 +19,9 @@ jobs:
         with:
           cmd: echo TOP_MODULE=`yq '.project.top_module' info.yaml` > $GITHUB_OUTPUT
 
+      - name: Debug copy command
+        run: echo "/bin/cp -f ${design_dir}/tt_submission/tt_um_Mr_Latch.gds ."
+
       - name: Show directory contents
         run: ls -la ${design_dir}/tt_submission
 
