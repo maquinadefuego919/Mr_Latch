@@ -19,6 +19,19 @@ jobs:
         with:
           cmd: echo TOP_MODULE=`yq '.project.top_module' info.yaml` > $GITHUB_OUTPUT
 
+      - name: Debug directory structure
+        run: |
+         ls -R ${{ github.event.inputs.design_dir }}
+         ls -R ./gds/
+
+      - name: Check GDS file existence
+        run: |
+         if [ -f "./gds/tt_um_Mr_Latch.gds" ]; then
+         echo "File exists in gds directory"
+         else
+         echo "File does not exist in gds directory"
+         fi
+
       - name: Debug copy command
         run: printf '%s\n' "${design_dir}/tt_submission/tt_um_Mr_Latch.gds"
  
