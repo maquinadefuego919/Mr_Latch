@@ -21,10 +21,10 @@ jobs:
 
       - name: Debug copy command
         run: printf '%s\n' "${design_dir}/tt_submission/tt_um_Mr_Latch.gds"
-       # run: echo "/bin/cp -f ${design_dir}/tt_submission/tt_um_Mr_Latch.gds ."
+
        
-     # - name: Find GDS file
-      #  run: find "${{ github.event.inputs.design_dir }}" -name "tt_um_Mr_Latch.gds"
+      - name: Find GDS file
+        run: find "${{ github.event.inputs.design_dir }}" -name "tt_um_Mr_Latch.gds"
 
 
      # - name: Show design_dir content
@@ -35,10 +35,6 @@ jobs:
 
       - name: Copy GDS file
         run: /bin/echo ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
-
-    #  - name: Copy GDS file
-       # run: |
-         # copy ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
           
 
       - name: Create and publish the GDS artifact
