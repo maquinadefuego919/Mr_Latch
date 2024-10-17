@@ -4,8 +4,8 @@ on:
   push:
   workflow_dispatch:
 
-  jobs:
-    gds:
+jobs:
+  gds:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
