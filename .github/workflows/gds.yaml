@@ -19,8 +19,7 @@ jobs:
         with:
           cmd: echo TOP_MODULE=`yq '.project.top_module' info.yaml` > $GITHUB_OUTPUT
 
- -name: Copy GDS file
-        run: |
+      - name: Copy GDS file
           copy ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
 
       - name: Create and publish the GDS artifact
