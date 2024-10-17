@@ -20,42 +20,71 @@ module tt_um_Mr_Latch (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-wire In, Out;
+// Definición de constantes
+localparam VGND = 0;
 
-    assign ua[0] = In;
-    assign ua[1] = Out;
-    assign ua[7:2] = VGND;
-    
-    pmos (Out, VDPWR, In);
-    nmos (Out, VGND, In);
+wire Vip, Vin, Out;
+wire INn, INp, INn_CMP, INp_CMP, CMP, EN, not_EN, Op, On; // Señales internas
 
-    assign uo_out[0] = VGND;
-    assign uo_out[1] = VGND; 
-  assign uo_out[2] = VGND;
-  assign uo_out[3] = VGND;
-  assign uo_out[4] = VGND;
-  assign uo_out[5] = VGND;
-  assign uo_out[6] = VGND;
-  assign uo_out[7] = VGND;
+// Lógica principal
+assign Vip = ua[0];
+assign Vin = ua[1];
 
-  assign uio_out[0] = VGND;
-  assign uio_out[1] = VGND;
-  assign uio_out[2] = VGND;
-  assign uio_out[3] = VGND;
-  assign uio_out[4] = VGND;
-  assign uio_out[5] = VGND;
-  assign uio_out[6] = VGND;
-  assign uio_out[7] = VGND;
+assign ua[2] = Out;
 
-  assign uio_oe[0] = VGND;
-  assign uio_oe[1] = VGND;
-  assign uio_oe[2] = VGND;
-  assign uio_oe[3] = VGND;
-  assign uio_oe[4] = VGND;
-  assign uio_oe[5] = VGND;
-  assign uio_oe[6] = VGND;
-  assign uio_oe[7] = VGND;
-  
+// Operaciones lógicas
+not IV1(INn, Vip);
+not INV2(INn_CMP,CMP);
+not IV3(INp, Vin);
+not INV4(INp_CMP,CMP);
+
+and AND1(INn_AND, INn, INn_CMP);
+and AND2(INp_AND, INp, INp_CMP);
+
+or OR1(Op, INn_AND, INp_AND);
+or OR2(On, INp_AND, INp_CMP);
+
+xor XOR1(EN, Op, On);
+
+not IV7(not_EN, EN);
+notif1 IT1(CMP, not_EN, Op);  
+
+// Comportamiento del circuito
+always @(posedge clk)
+begin
+    if (EN)
+        Out <= Op;
+    else
+        Out <= 1'b0;
+end
+
+// Asignación de salidas
+assign uo_out[2] = VGND;
+assign uo_out[3] = VGND;
+assign uo_out[4] = VGND;
+assign uo_out[5] = VGND;
+assign uo_out[6] = VGND;
+assign uo_out[7] = VGND;
+
+assign uio_out[0] = VGND;
+assign uio_out[1] = VGND;
+assign uio_out[2] = VGND;
+assign uio_out[3] = VGND;
+assign uio_out[4] = VGND;
+assign uio_out[5] = VGND;
+assign uio_out[6] = VGND;
+assign uio_out[7] = VGND;
+
+assign uio_oe[0] = VGND;
+assign uio_oe[1] = VGND;
+assign uio_oe[2] = VGND;
+assign uio_oe[3] = VGND;
+assign uio_oe[4] = VGND;
+assign uio_oe[5] = VGND;
+assign uio_oe[6] = VGND;
+assign uio_oe[7] = VGND;
+
+endmodule
 
     
 endmodule
