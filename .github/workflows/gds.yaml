@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  gds:
+   gds:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
