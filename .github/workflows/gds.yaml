@@ -22,6 +22,9 @@ jobs:
       - name: Debug copy command
         run: echo "/bin/cp -f ${design_dir}/tt_submission/tt_um_Mr_Latch.gds ."
 
+      - name: Show design_dir content
+        run: echo ${{ github.event.inputs.design_dir }}
+
       - name: Show directory contents
         run: ls -la ${design_dir}/tt_submission
 
