@@ -29,8 +29,7 @@ jobs:
         run: ls -la ${design_dir}/tt_submission
 
       - name: Copy GDS file
-        run: /bin/cp -f ${design_dir}/tt_submission/tt_um_Mr_Latch.gds 
-
+        run: /bin/echo ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
 
     #  - name: Copy GDS file
        # run: |
