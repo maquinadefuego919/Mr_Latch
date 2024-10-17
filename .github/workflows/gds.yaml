@@ -28,13 +28,13 @@ on:
 
 
 
-        -name: Check GDS file existence
-        run: |
-         if [ -f "./gds/tt_um_Mr_Latch.gds" ]; then
-         echo "File exists in gds directory"
-         else
-         echo "File does not exist in gds directory"
-         fi
+     #   -name: Check GDS file existence
+        #run: |
+      #   if [ -f "./gds/tt_um_Mr_Latch.gds" ]; then
+      #   echo "File exists in gds directory"
+      #   else
+     #    echo "File does not exist in gds directory"
+     #    fi
 
       - name: Debug copy command
         run: printf '%s\n' "${design_dir}/tt_submission/tt_um_Mr_Latch.gds"
