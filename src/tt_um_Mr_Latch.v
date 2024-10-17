@@ -19,7 +19,6 @@ module tt_um_Mr_Latch (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-
 // Definición de constantes
 localparam VGND = 0;
 
@@ -84,7 +83,4 @@ assign uio_oe[5] = VGND;
 assign uio_oe[6] = VGND;
 assign uio_oe[7] = VGND;
 
-endmodule
-
-    
 endmodule
