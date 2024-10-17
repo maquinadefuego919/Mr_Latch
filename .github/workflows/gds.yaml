@@ -23,6 +23,12 @@ jobs:
         run: printf '%s\n' "${design_dir}/tt_submission/tt_um_Mr_Latch.gds"
  
 
+      - name: Copy GDS file
+        run: |
+          cp "${{ github.event.inputs.design_dir }}/tt_submission/tt_um_Mr_Latch.gds" ./gds/
+           ls -l ./gds/
+          echo "File copied successfully?"
+
       - name: Check if GDS file exists
         run: |
          if [ ! -f "${{ github.event.inputs.design_dir }}/tt_submission/tt_um_Mr_Latch.gds" ]; then
@@ -45,8 +51,8 @@ jobs:
     #  - name: Show directory contents
      #   run: ls -la ${design_dir}/tt_submission
 
-      - name: Copy GDS file
-        run: /bin/echo ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
+     # - name: Copy GDS file
+     #   run: /bin/echo ${design_dir}/tt_submission/tt_um_Mr_Latch.gds
           
 
       - name: Create and publish the GDS artifact
