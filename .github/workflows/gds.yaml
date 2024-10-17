@@ -23,7 +23,7 @@ jobs:
         uses: TinyTapeout/tt-gds-action/custom_gds@tt09
         with:
           top_module: ${{ steps.top_module.outputs.TOP_MODULE }}
-          gds_path: gds/${{ steps.top_module.outputs.TOP_MODULE }}.gds
+         # gds_path: gds/${{ steps.top_module.outputs.TOP_MODULE }}.gds
           #lef_path: lef/${{ steps.top_module.outputs.TOP_MODULE }}.lef
           verilog_path: src/project.v
   
