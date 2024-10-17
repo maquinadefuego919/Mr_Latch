@@ -31,32 +31,23 @@ assign Vin = ua[1];
 
 assign ua[2] = Out;
 
-// Operaciones lógicas
-not IV1(INn, Vip);
-not INV2(INn_CMP,CMP);
-not IV3(INp, Vin);
-not INV4(INp_CMP,CMP);
+    not IV1(INn, Vip);    
+    not INV2(INn_CMP,CMP);
+    not IV3(INp, Vin);
+    not INV4(INp_CMP,CMP);
 
-and AND1(INn_AND, INn, INn_CMP);
-and AND2(INp_AND, INp, INp_CMP);
+    nor NOR1(Op, INn, INn_CMP);
+    nor NOR2(On, INp, INp_CMP);
+    
 
-or OR1(Op, INn_AND, INp_AND);
-or OR2(On, INp_AND, INp_CMP);
-
-xor XOR1(EN, Op, On);
-
-not IV7(not_EN, EN);
-notif1 IT1(CMP, not_EN, Op);  
-
-// Comportamiento del circuito
-always @(posedge clk)
-begin
-    if (EN)
-        Out <= Op;
-    else
-        Out <= 1'b0;
-end
-
+    xor XOR1(EN, Op, On);
+    
+    not IV7(not_EN, EN);
+    notif1 IT1(CMP, not_EN, Op);  
+    
+    bufif1 BT1(Out, EN, Op);   
+    
+    
 // Asignación de salidas
 assign uo_out[2] = VGND;
 assign uo_out[3] = VGND;
