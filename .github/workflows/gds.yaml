@@ -27,12 +27,8 @@ on:
     echo "Design Dir: $DESIGN_DIR"
 
 
-       - name: Debug directory structure 
-         run: |
-          ls -R ${{ github.event.inputs.design_dir }}
-          ls -R ./gds/
 
-      - name: Check GDS file existence
+        -name: Check GDS file existence
         run: |
          if [ -f "./gds/tt_um_Mr_Latch.gds" ]; then
          echo "File exists in gds directory"
