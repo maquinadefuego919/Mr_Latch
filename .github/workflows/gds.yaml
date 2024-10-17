@@ -19,10 +19,18 @@ jobs:
         with:
           cmd: echo TOP_MODULE=`yq '.project.top_module' info.yaml` > $GITHUB_OUTPUT
 
-      - name: Debug directory structure
-        run: |
-         ls -R ${{ github.event.inputs.design_dir }}
-         ls -R ./gds/
+      - name: Set environment variables
+env:
+    DESIGN_DIR: ${{ github.event.inputs.design_dir }}
+    run: |
+     export DESIGN_DIR=$DESIGN_DIR
+    echo "Design Dir: $DESIGN_DIR"
+
+
+     #- name: Debug directory structure 
+     #  run: |
+     #    ls -R ${{ github.event.inputs.design_dir }}
+       #  ls -R ./gds/
 
       - name: Check GDS file existence
         run: |
