@@ -4,7 +4,7 @@ on:
   push:
   workflow_dispatch:
 
-jobs:
+  jobs:
     gds:
     runs-on: ubuntu-latest
     steps:
@@ -27,10 +27,10 @@ jobs:
     echo "Design Dir: $DESIGN_DIR"
 
 
-     #- name: Debug directory structure 
-     #  run: |
-     #    ls -R ${{ github.event.inputs.design_dir }}
-       #  ls -R ./gds/
+       - name: Debug directory structure 
+         run: |
+          ls -R ${{ github.event.inputs.design_dir }}
+          ls -R ./gds/
 
       - name: Check GDS file existence
         run: |
